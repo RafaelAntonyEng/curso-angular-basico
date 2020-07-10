@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroAddComponent } from './hero-add/hero-add.component';
+import { SearchInputComponent } from './search-input/search-input.component';
+import { HeroFilterPipe } from './hero-filter.pipe';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { HeroAddComponent } from './hero-add/hero-add.component';
     MessagesComponent,
     NavbarComponent,
     DashboardComponent,
-    HeroAddComponent
+    HeroAddComponent,
+    SearchInputComponent,
+    HeroFilterPipe
   ],
   imports: [
     BrowserModule,

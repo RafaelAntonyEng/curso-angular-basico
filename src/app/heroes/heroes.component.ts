@@ -13,6 +13,8 @@ export class HeroesComponent implements OnInit {
 
   heroes: Hero[];
 
+  filter = '';
+
   constructor(
     private heroService: HeroService,
     private messageService: MessageService
@@ -46,5 +48,10 @@ export class HeroesComponent implements OnInit {
       }
     });
   }
+
+  onFilter(term: string) {
+    this.filter = term;
+  }
+
 
 }
