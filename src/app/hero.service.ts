@@ -4,7 +4,7 @@ import { Hero } from './hero.model';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { MessageService } from './message.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 
@@ -14,6 +14,10 @@ import { environment } from 'src/environments/environment';
 export class HeroService {
 
   private heroesUrl = `${environment.baseUrl}/heroes`;
+
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   constructor(private messageService: MessageService,
     private http: HttpClient) { }
@@ -37,6 +41,16 @@ export class HeroService {
 
     // return of(HEROES.find(hero => hero.id === id));
   }
+
+  updateHero(hero: Hero): Observable<Hero> {
+    const url = `${this.heroesUrl}/${hero.id}`;
+
+    return this.http.put<Hero>(url, hero, this.httpOptions).pipe(
+      tap(() => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError<Hero>('updateHeroes'))
+    );
+  }
+
 
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`)
