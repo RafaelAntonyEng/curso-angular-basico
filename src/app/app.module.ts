@@ -16,6 +16,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { HeroAddComponent } from './hero-add/hero-add.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { HeroFilterPipe } from './hero-filter.pipe';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HeroFilterPipe } from './hero-filter.pipe';
     DashboardComponent,
     HeroAddComponent,
     SearchInputComponent,
-    HeroFilterPipe
+    HeroFilterPipe,
+    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
